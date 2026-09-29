@@ -1,0 +1,37 @@
+Chiu_patients = {
+    "Ana": [80,50,150,90,140,170,1000],
+    "Kirk": [130,140,135,90,140,200,230],
+    "Liza": [90,100,95,90,140,210,220]
+}
+
+for Chiu_name,Chiu_reading in patients.items():
+    Chiu_tally = 0
+    Chiu_highestreading = 0
+    print("\nPatient: ",Chiu_name)
+    print("==== BLOOD SUGAR SUMMARY ====")
+    for Chiu_item in Chiu_reading:
+        Chiu_avg = sum(Chiu_reading) / len(Chiu_reading)
+        Chiu_diff = max(Chiu_reading) - min(Chiu_reading)
+        if Chiu_item > 120:
+            print(f"{Chiu_item}: High")
+            Chiu_tally = Chiu_tally + 1
+            Chiu_highestreading = Chiu_item
+        else:
+            print(f"{Chiu_item}: Normal")
+    print("=============================")
+    print(f"Highest Reading: {Chiu_highestreading}")
+    print(f"Number of High Readings {Chiu_tally}")
+    print("Lowest Reading: ",min(Chiu_reading))
+    print("Higest Reading: ", max(Chiu_reading))
+    print(f"Average: {Chiu_avg:.2f}")
+    print("Difference: ",Chiu_diff)
+
+
+
+
+
+
+
+
+
+
