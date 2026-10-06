@@ -1,0 +1,60 @@
+Employee = {
+    "E100": {"Name": "Liane Uy", "Rank": "JO 5", "DutyHours": (42,43,40,40), "BasicPay": 29000, "RequiredHours": 160},
+    "E105": {"Name": "Robert Santos", "Rank": "Manager 1", "DutyHours": (30,35,31,30), "BasicPay": 60000, "RequiredHours": 120},
+    "E110": {"Name": "Clark Pastilan", "Rank": "Mafia Boss", "DutyHours": (67,67,67,67), "BasicPay": 120000, "RequiredHours": 400},
+    "E115": {"Name": "Clark Yabo", "Rank": "Mafia Crook", "DutyHours": (15,12,10,13), "BasicPay": 15000, "RequiredHours": 50}
+}
+EmployeeSearch = input("Enter Employee ID: ").title()
+
+
+for id,data in Employee.items():
+    if EmployeeSearch == id:
+        print("Found!")
+        ename = data["Name"]
+        erank = data["Rank"]
+        edutyhours = data["DutyHours"]
+        ebasicpay = data["BasicPay"]
+        erequiredhours = data["RequiredHours"]
+        rate = ebasicpay / erequiredhours
+        exceeding = 0
+        print("")
+        print("Employee ID: ",id)
+        print("Name: ",ename)
+        print("Rank: ",erank)
+        print("Duty Hours: ",*edutyhours)
+        print("Basic Pay: ",ebasicpay)
+        print("Required Hours: ",erequiredhours)
+        dutyhourssum = sum(edutyhours)
+        rate = ebasicpay / erequiredhours
+        print("Total Duty Hours: ",dutyhourssum)
+        if dutyhourssum > erequiredhours:
+            exceeding = dutyhourssum - erequiredhours
+            overtime = (rate * 1.5) * exceeding
+            grosspay = ebasicpay + overtime
+            print("Excess Hours: ",exceeding)
+            print("Rate per hour: ", rate)
+            print("Overtime: ",overtime)
+            print("Gross Pay: ",grosspay)
+        elif dutyhourssum < erequiredhours:
+            exceedingminus =  erequiredhours - dutyhourssum
+            undertimepay =  rate * exceedingminus
+            undertimegrosspay = ebasicpay - undertimepay
+            print("Missing Hours: ",exceedingminus)
+            print("Rate per hour: ", rate)
+            print("Undertime Deduction: ", undertimepay)
+            print("Gross Pay: ", undertimegrosspay)
+        break
+else:
+    print("Employee Not Found!")
+
+
+
+
+
+
+
+
+
+
+
+
